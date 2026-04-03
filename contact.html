@@ -74,7 +74,7 @@
   <form class="contact-form-area" action="https://formsubmit.co/el/juwopi" method="POST">
     <h3>Send us a message</h3>
     <input type="hidden" name="_subject" value="Message from HUGIIM website">
-    <input type="hidden" name="_next" value="contact.html?sent=1">
+    <input type="hidden" name="_next" id="contact-form-next" value="">
     <div class="form-field">
       <label for="contact-name">Your Name</label>
       <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required>
@@ -105,10 +105,14 @@
 
 <script>
 (function () {
+  var nextEl = document.getElementById('contact-form-next');
+  if (nextEl) {
+    nextEl.value = new URL('contact.html?sent=1', location.href).href;
+  }
   if (new URLSearchParams(location.search).get('sent') === '1') {
     var n = document.getElementById('form-sent-notice');
     if (n) { n.hidden = false; }
-    history.replaceState(null, '', 'contact.html');
+    history.replaceState(null, '', new URL('contact.html', location.href).pathname);
   }
 })();
 </script>
