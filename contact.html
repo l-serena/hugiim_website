@@ -33,8 +33,6 @@
   </div>
 </header>
 
-<p class="form-sent-notice" id="form-sent-notice" role="status" hidden>Thanks — your message was sent. We’ll get back to you soon.</p>
-
 <main class="page-main">
 <section class="contact" id="contact">
   <div class="contact-info">
@@ -74,9 +72,6 @@
   <form class="contact-form-area" action="https://api.web3forms.com/submit" method="POST">
     <h3>Send us a message</h3>
     <input type="hidden" name="access_key" value="b3677f23-9244-485e-9418-e0bc8c974942">
-    <input type="hidden" name="subject" value="Message from HUGIIM website">
-    <input type="hidden" name="redirect" id="contact-form-redirect" value="">
-    <input type="checkbox" name="botcheck" class="contact-form-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
     <div class="form-field">
       <label for="contact-name">Your Name</label>
       <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required>
@@ -104,27 +99,5 @@
     <span>© 2026 HUGIIM. All rights reserved.</span>
   </div>
 </footer>
-
-<script>
-(function () {
-  var redirectEl = document.getElementById('contact-form-redirect');
-  function setFormRedirect() {
-    if (!redirectEl) return;
-    try {
-      redirectEl.value = new URL('contact.html?sent=1', location.href).href;
-    } catch (e) {}
-  }
-  setFormRedirect();
-  var form = document.querySelector('.contact-form-area');
-  if (form) {
-    form.addEventListener('submit', setFormRedirect);
-  }
-  if (new URLSearchParams(location.search).get('sent') === '1') {
-    var n = document.getElementById('form-sent-notice');
-    if (n) { n.hidden = false; }
-    history.replaceState(null, '', new URL('contact.html', location.href).pathname);
-  }
-})();
-</script>
 </body>
 </html>
