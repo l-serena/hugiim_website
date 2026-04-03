@@ -249,6 +249,11 @@ strong {
   hyphens: auto;
 }
 
+/* Keep “Gender Inclusivity” on one line; type scales down on narrow viewports */
+.hero-title-line1 {
+  white-space: nowrap;
+}
+
 .hero-title em {
   font-style: italic;
   color: var(--teal);
@@ -899,6 +904,10 @@ footer {
 
   .hero { padding: 3rem 1.5rem 1.5rem; }
 
+  .hero-title {
+    font-size: clamp(1.35rem, 4.5vw + 0.65rem, 7.5rem);
+  }
+
   .hero-tag {
     font-size: 0.68rem;
     letter-spacing: 0.14em;
@@ -935,6 +944,12 @@ footer {
   }
 
   .footer-right { text-align: left; }
+}
+
+@media (max-width: 420px) {
+  .hero-title {
+    font-size: clamp(1.05rem, 5.5vw + 0.25rem, 7.5rem);
+  }
 }
 
 /* Hero loads static (no staggered fade) to avoid “jump” on paint */
