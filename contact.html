@@ -71,11 +71,12 @@
     </div>
   </div>
 
-  <form class="contact-form-area" action="https://formsubmit.co/el/juwopi" method="POST">
+  <form class="contact-form-area" action="https://api.web3forms.com/submit" method="POST">
     <h3>Send us a message</h3>
-    <input type="hidden" name="_subject" value="Message from HUGIIM website">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" id="contact-form-next" value="">
+    <input type="hidden" name="access_key" value="b3677f23-9244-485e-9418-e0bc8c974942">
+    <input type="hidden" name="subject" value="Message from HUGIIM website">
+    <input type="hidden" name="redirect" id="contact-form-redirect" value="">
+    <input type="checkbox" name="botcheck" class="contact-form-botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
     <div class="form-field">
       <label for="contact-name">Your Name</label>
       <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required>
@@ -106,17 +107,17 @@
 
 <script>
 (function () {
-  var nextEl = document.getElementById('contact-form-next');
-  function setFormNext() {
-    if (!nextEl) return;
+  var redirectEl = document.getElementById('contact-form-redirect');
+  function setFormRedirect() {
+    if (!redirectEl) return;
     try {
-      nextEl.value = new URL('contact.html?sent=1', location.href).href;
+      redirectEl.value = new URL('contact.html?sent=1', location.href).href;
     } catch (e) {}
   }
-  setFormNext();
+  setFormRedirect();
   var form = document.querySelector('.contact-form-area');
   if (form) {
-    form.addEventListener('submit', setFormNext);
+    form.addEventListener('submit', setFormRedirect);
   }
   if (new URLSearchParams(location.search).get('sent') === '1') {
     var n = document.getElementById('form-sent-notice');

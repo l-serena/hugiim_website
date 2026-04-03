@@ -784,6 +784,10 @@ section { padding: 6rem 3rem; }
   border-color: var(--dark);
 }
 
+.contact-form-botcheck {
+  display: none !important;
+}
+
 .contact-form-area h3 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.6rem;
